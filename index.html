@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechDrivenAudit.ai - Revolutionizing Internal Audit with AI</title>
+    <!-- Optimized for GitHub Pages and Vercel deployment -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            padding: 1rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin-left: auto;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .language-toggle {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+        
+        .language-toggle:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Content Sections */
+        .content {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: linear-gradient(145deg, #f8f9ff, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* AI Tools Section */
+        .ai-tools {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Language specific content */
+        .lang-de {
+            display: none;
+        }
+        
+        body.german .lang-en {
+            display: none;
+        }
+        
+        body.german .lang-de {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TechDrivenAudit.ai</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="lang-en">Home</a><a href="#home" class="lang-de">Start</a></li>
+                <li><a href="#services" class="lang-en">Services</a><a href="#services" class="lang-de">Services</a></li>
+                <li><a href="#tools" class="lang-en">AI Tools</a><a href="#tools" class="lang-de">KI-Tools</a></li>
+                <li><a href="#insights" class="lang-en">Insights</a><a href="#insights" class="lang-de">Insights</a></li>
+                <li><a href="#contact" class="lang-en">Contact</a><a href="#contact" class="lang-de">Kontakt</a></li>
+            </ul>
+            <button class="language-toggle" onclick="toggleLanguage()">
+                <span class="lang-en">DE</span>
+                <span class="lang-de">EN</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="lang-en">Revolutionizing Internal Audit with AI</h1>
+            <h1 class="lang-de">Interne Revision revolutioniert durch KI</h1>
+            
+            <p class="subtitle lang-en">
+                Bridging traditional audit practices with cutting-edge artificial intelligence to transform risk assessment, compliance monitoring, and audit efficiency.
+            </p>
+            <p class="subtitle lang-de">
+                Traditionelle Prüfungspraktiken mit modernster künstlicher Intelligenz verbinden, um Risikobewertung, Compliance-Überwachung und Prüfungseffizienz zu transformieren.
+            </p>
+            
+            <a href="#services" class="cta-button lang-en">Explore Solutions</a>
+            <a href="#services" class="cta-button lang-de">Lösungen Entdecken</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="content" id="services">
+        <div class="container">
+            <div class="section">
+                <h2 class="lang-en">Transforming Audit Through Technology</h2>
+                <h2 class="lang-de">Prüfung durch Technologie transformieren</h2>
+                
+                <div class="cards">
+                    <div class="card">
+                        <h3 class="lang-en">🔍 AI-Powered Risk Assessment</h3>
+                        <h3 class="lang-de">🔍 KI-gestützte Risikobewertung</h3>
+                        <p class="lang-en">
+                            Leverage machine learning algorithms to identify anomalies and patterns in financial data that traditional sampling methods might miss. Our approach combines statistical analysis with predictive modeling to enhance audit quality and efficiency.
+                        </p>
+                        <p class="lang-de">
+                            Nutzen Sie Machine-Learning-Algorithmen, um Anomalien und Muster in Finanzdaten zu identifizieren, die traditionelle Stichprobenmethoden übersehen könnten. Unser Ansatz kombiniert statistische Analyse mit prädiktiven Modellen zur Verbesserung von Prüfungsqualität und -effizienz.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="lang-en">📊 Continuous Monitoring Systems</h3>
+                        <h3 class="lang-de">📊 Kontinuierliche Überwachungssysteme</h3>
+                        <p class="lang-en">
+                            Move beyond periodic audits to real-time risk monitoring. Implement automated controls that flag potential issues as they occur, enabling proactive rather than reactive audit responses.
+                        </p>
+                        <p class="lang-de">
+                            Über periodische Prüfungen hinaus zu Echtzeit-Risikoüberwachung. Implementieren Sie automatisierte Kontrollen, die potenzielle Probleme sofort kennzeichnen und proaktive statt reaktive Prüfungsantworten ermöglichen.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="lang-en">🤖 Process Automation</h3>
+                        <h3 class="lang-de">🤖 Prozessautomatisierung</h3>
+                        <p class="lang-en">
+                            Automate routine audit procedures using RPA and AI tools. Free up valuable auditor time for high-value analytical work while ensuring consistent application of audit procedures across all engagements.
+                        </p>
+                        <p class="lang-de">
+                            Automatisieren Sie routinemäßige Prüfungsverfahren mit RPA- und KI-Tools. Schaffen Sie wertvolle Zeit für hochwertige analytische Arbeit und gewährleisten Sie eine konsistente Anwendung von Prüfungsverfahren in allen Engagements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Tools Section -->
+    <section class="ai-tools" id="tools">
+        <div class="container">
+            <div class="section">
+                <h2 class="lang-en">Essential AI Tools for Modern Auditors</h2>
+                <h2 class="lang-de">Unverzichtbare KI-Tools für moderne Revisoren</h2>
+                
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">🧠</div>
+                        <h4 class="lang-en">Natural Language Processing</h4>
+                        <h4 class="lang-de">Natural Language Processing</h4>
+                        <p class="lang-en">Analyze contracts, policies, and documentation</p>
+                        <p class="lang-de">Verträge, Richtlinien und Dokumentation analysieren</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">📈</div>
+                        <h4 class="lang-en">Predictive Analytics</h4>
+                        <h4 class="lang-de">Predictive Analytics</h4>
+                        <p class="lang-en">Forecast risks and identify emerging threats</p>
+                        <p class="lang-de">Risiken prognostizieren und neue Bedrohungen identifizieren</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">🔒</div>
+                        <h4 class="lang-en">Fraud Detection</h4>
+                        <h4 class="lang-de">Betrugserkennung</h4>
+                        <p class="lang-en">Advanced algorithms for anomaly detection</p>
+                        <p class="lang-de">Fortschrittliche Algorithmen zur Anomalieerkennung</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">📋</div>
+                        <h4 class="lang-en">Compliance Automation</h4>
+                        <h4 class="lang-de">Compliance-Automatisierung</h4>
+                        <p class="lang-en">Automated regulatory compliance monitoring</p>
+                        <p class="lang-de">Automatisierte regulatorische Compliance-Überwachung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="content" id="insights">
+        <div class="container">
+            <div class="section">
+                <h2 class="lang-en">Latest Insights & Research</h2>
+                <h2 class="lang-de">Neueste Insights & Forschung</h2>
+                
+                <div class="cards">
+                    <div class="card">
+                        <h3 class="lang-en">The Future of Internal Audit</h3>
+                        <h3 class="lang-de">Die Zukunft der Internen Revision</h3>
+                        <p class="lang-en">
+                            Exploring how emerging technologies like blockchain, IoT, and advanced analytics are reshaping the audit landscape. What skills will auditors need in the digital age?
+                        </p>
+                        <p class="lang-de">
+                            Erforschen Sie, wie neue Technologien wie Blockchain, IoT und fortgeschrittene Analytik die Prüfungslandschaft umgestalten. Welche Fähigkeiten benötigen Revisoren im digitalen Zeitalter?
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="lang-en">Implementing AI in Small Audit Teams</h3>
+                        <h3 class="lang-de">KI in kleinen Prüfungsteams implementieren</h3>
+                        <p class="lang-en">
+                            Practical strategies for introducing AI tools when resources are limited. Learn how to maximize impact with minimal investment and build capabilities gradually.
+                        </p>
+                        <p class="lang-de">
+                            Praktische Strategien zur Einführung von KI-Tools bei begrenzten Ressourcen. Erfahren Sie, wie Sie mit minimalen Investitionen maximale Wirkung erzielen und Fähigkeiten schrittweise aufbauen.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="lang-en">Ethics in AI-Driven Auditing</h3>
+                        <h3 class="lang-de">Ethik in KI-getriebener Prüfung</h3>
+                        <p class="lang-en">
+                            Addressing the ethical considerations and potential biases in AI-powered audit tools. How do we ensure fairness and transparency in automated decision-making?
+                        </p>
+                        <p class="lang-de">
+                            Ethische Überlegungen und potenzielle Verzerrungen in KI-gestützten Prüfungstools ansprechen. Wie gewährleisten wir Fairness und Transparenz bei automatisierten Entscheidungen?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="lang-en">About TechDrivenAudit</h4>
+                    <h4 class="lang-de">Über TechDrivenAudit</h4>
+                    <p class="lang-en">Bridging the gap between traditional audit practices and cutting-edge technology solutions.</p>
+                    <p class="lang-de">Die Brücke zwischen traditionellen Prüfungspraktiken und modernsten Technologielösungen schlagen.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="lang-en">Quick Links</h4>
+                    <h4 class="lang-de">Schnellzugriff</h4>
+                    <a href="#services" class="lang-en">Services</a>
+                    <a href="#services" class="lang-de">Services</a>
+                    <a href="#tools" class="lang-en">AI Tools</a>
+                    <a href="#tools" class="lang-de">KI-Tools</a>
+                    <a href="#insights" class="lang-en">Insights</a>
+                    <a href="#insights" class="lang-de">Insights</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="lang-en">Connect</h4>
+                    <h4 class="lang-de">Verbinden</h4>
+                    <a href="mailto:info@techdrivenaudit.ai">info@techdrivenaudit.ai</a>
+                    <a href="#" class="lang-en">Newsletter</a>
+                    <a href="#" class="lang-de">Newsletter</a>
+                    <a href="#" class="lang-en">LinkedIn</a>
+                    <a href="#" class="lang-de">LinkedIn</a>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #4a5568; padding-top: 20px; margin-top: 20px;">
+                <p class="lang-en">&copy; 2025 TechDrivenAudit.ai - Revolutionizing Internal Audit</p>
+                <p class="lang-de">&copy; 2025 TechDrivenAudit.ai - Interne Revision revolutionieren</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Functionality
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.classList.contains('german') ? 'en' : 'de';
+            
+            if (currentLang === 'en') {
+                body.classList.add('german');
+                localStorage.setItem('language', 'de');
+            } else {
+                body.classList.remove('german');
+                localStorage.setItem('language', 'en');
+            }
+        }
+        
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('language');
+            if (savedLang === 'de') {
+                document.body.classList.add('german');
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
